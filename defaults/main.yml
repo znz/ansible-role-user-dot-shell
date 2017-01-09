@@ -1,6 +1,5 @@
 ---
-dot_shell_home_dir: "/home/vagrant"
-dot_shell_ghq_root: "/home/vagrant/s"
-
+dot_shell_home_dir: "/home/{{ ansible_user_id }}"
+dot_shell_ghq_root: "/home/{{ ansible_user_id }}/s"
 git_update: no
 git_depth: 1
