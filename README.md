@@ -26,7 +26,7 @@ Normal usage:
 
     ---
     - hosts: all
-      become: yes
+      become: no
       roles:
       - znz.user-dot-shell
 
