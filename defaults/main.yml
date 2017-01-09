@@ -1,0 +1,6 @@
+---
+dot_shell_home_dir: "/home/vagrant"
+dot_shell_ghq_root: "/home/vagrant/s"
+
+git_update: no
+git_depth: 1

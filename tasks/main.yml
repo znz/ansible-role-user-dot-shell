@@ -1,0 +1,27 @@
+---
+- name: "git clone dot-shell"
+  git:
+    repo: https://github.com/znz/dot-shell
+    dest: "{{ dot_shell_ghq_root }}/github.com/znz/dot-shell"
+    update: "{{ git_update }}"
+    depth: "{{ git_depth }}"
+- name: "make in dot-shell"
+  make:
+    chdir: "{{ dot_shell_ghq_root }}/github.com/znz/dot-shell"
+- name: "set HashKnownHosts no"
+  lineinfile:
+    dest: "{{ dot_shell_home_dir }}/.ssh/config"
+    regexp: '^HashKnownHosts'
+    line: 'HashKnownHosts no'
+    create: yes
+- name: "make .gitconfig"
+  make:
+    chdir: "{{ dot_shell_ghq_root }}/github.com/znz/dot-shell"
+    target: "{{ dot_shell_home_dir }}/.gitconfig"
+    params:
+      USER_NAME: "{{ user_name }}"
+      USER_EMAIL: "{{ user_email }}"
+- name: "make .byobu"
+  make:
+    chdir: "{{ dot_shell_ghq_root }}/github.com/znz/dot-shell"
+    target: "{{ dot_shell_home_dir }}/.byobu"
